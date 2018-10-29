@@ -209,4 +209,5 @@ header.backgroundFavoritos{
   padding-top:7rem;
   padding-bottom:calc(7rem - 56px);
   background-color: tomato;
+  /* */
 }
