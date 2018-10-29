@@ -40,7 +40,11 @@
   text-align: center;
 }
 
-.backgroundLogin{padding-top:10rem;padding-bottom:calc(10rem - 56px);background-image: url('../../images/blue-gradient-background.png') ;background-position:center center;background-size:cover}
+.backgroundLogin{
+  padding-top:10rem;
+  padding-bottom:calc(10rem - 56px);
+
+}
 
 
     #mainNav{border-bottom:1px solid rgba(33,37,41,.1);background-color:rgba(255,255,255,.1);font-family:'Open Sans','Helvetica Neue',Arial,sans-serif;-webkit-transition:all .2s;transition:all .2s}
@@ -126,7 +130,11 @@
   font-family: "Roboto", sans-serif;
   text-transform: uppercase;
   outline: 0;
+<<<<<<< HEAD
+  background: tomato;
+=======
   background: #F05F40;
+>>>>>>> 8c219768bc7605c0ac26edd4ace87dd6a1750f33
   width: 100%;
   border: 0;
   padding: 15px;
@@ -137,7 +145,11 @@
   cursor: pointer;
 }
 .form button:hover,.form button:active,.form button:focus {
+<<<<<<< HEAD
+  background: #ab4431;
+=======
   background: #F05F40;
+>>>>>>> 8c219768bc7605c0ac26edd4ace87dd6a1750f33
 }
 .form .message {
   margin: 15px 0 0;
@@ -188,12 +200,14 @@
   color: #EF3B3A;
 }
 header.backgroundLogin {
-  background: #F05F40; /* fallback for old browsers */
-  background: -webkit-linear-gradient(right, #F05F40, #F05F40);
-  background: -moz-linear-gradient(right, #F05F40, #F05F40);
-  background: -o-linear-gradient(right, #F05F40, #F05F40);
-  background: linear-gradient(to left, #F05F40, #F05F40);
-  font-family: "Roboto", sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  background-color: tomato!important;
+}
+
+
+
+header.backgroundFavoritos{
+  padding-top:7rem;
+  padding-bottom:calc(7rem - 56px);
+  background-color: tomato;
+  /* */
 }

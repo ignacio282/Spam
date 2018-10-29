@@ -396,31 +396,13 @@ img.mfp-img {
       padding-bottom:0;
       padding-left: 0;}
 
-/*css del luna para favoritos*/
-.backgroundLogin{padding-top:7rem;
-padding-bottom:calc(7rem - 56px);
-background-image: url('../../images/blue-gradient-background.png') ;background-position:center center;background-size:cover}
 
 
-header.backgroundFavoritos{
-  padding-top:7rem;
-  padding-bottom:calc(7rem - 56px);
-  background-color: red;
-  http://colorzilla.com/gradient-editor/#ffb76b+0,ffa73d+39,ff7c00+78,ff7f04+100 */
-background: #ffb76b; /* Old browsers */
-background: -moz-radial-gradient(center, ellipse cover, #ffb76b 0%, #ffa73d 39%, #ff7c00 78%, #ff7f04 100%); /* FF3.6-15 */
-background: -webkit-radial-gradient(center, ellipse cover, #ffb76b 0%,#ffa73d 39%,#ff7c00 78%,#ff7f04 100%); /* Chrome10-25,Safari5.1-6 */
-background: radial-gradient(ellipse at center, #ffb76b 0%,#ffa73d 39%,#ff7c00 78%,#ff7f04 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffb76b', endColorstr='#ff7f04',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
-  /* background-image: url('../../images/blue-gradient-background.png'); */
-  background-position:center center;
-  background-size:cover;
-}
+
+
 
 i.Gold{
-  background: -webkit-linear-gradient(#f1e867, #feb645);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  color: tomato;
 }
 
 .fa-heart.red{
@@ -433,14 +415,16 @@ i.Gold{
 .pel{
   border-radius: 20px;
   padding-right: 20px;
-  background-color: #ffa439;
+  background-color: tomato;
   -webkit-box-shadow: 10px 10px 25px -3px rgba(107,107,107,1);
--moz-box-shadow: 10px 10px 25px -3px rgba(107,107,107,1);
-box-shadow: 10px 10px 25px -3px rgba(107,107,107,1);
-}
+  -moz-box-shadow: 10px 10px 25px -3px rgba(107,107,107,1);
+  box-shadow: 10px 10px 25px -3px rgba(107,107,107,1);
+  }
 
 .sh{
   -webkit-box-shadow: 10px 10px 25px -3px rgba(107,107,107,1);
--moz-box-shadow: 10px 10px 25px -3px rgba(107,107,107,1);
-box-shadow: 10px 10px 25px -3px rgba(107,107,107,1);
+  -moz-box-shadow: 10px 10px 25px -3px rgba(107,107,107,1);
+  box-shadow: 10px 10px 25px -3px rgba(107,107,107,1);
+  margin-bottom: 25px;
+  margin-top: 15px;
 }
