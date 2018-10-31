@@ -130,11 +130,9 @@
   font-family: "Roboto", sans-serif;
   text-transform: uppercase;
   outline: 0;
-<<<<<<< HEAD
+
   background: tomato;
-=======
-  background: #F05F40;
->>>>>>> 8c219768bc7605c0ac26edd4ace87dd6a1750f33
+
   width: 100%;
   border: 0;
   padding: 15px;
@@ -145,11 +143,8 @@
   cursor: pointer;
 }
 .form button:hover,.form button:active,.form button:focus {
-<<<<<<< HEAD
+
   background: #ab4431;
-=======
-  background: #F05F40;
->>>>>>> 8c219768bc7605c0ac26edd4ace87dd6a1750f33
 }
 .form .message {
   margin: 15px 0 0;
