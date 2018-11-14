@@ -8,4 +8,9 @@ var peliculaSchema = new mongoose.Schema({
 	calificacion:String
 
 });
+
+
+
+
+
 mongoose.model('Peliculas',peliculaSchema,'peliculas');

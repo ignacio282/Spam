@@ -42,3 +42,7 @@ process.on('SIGTERM', function(){
 });
 
 require('./peliculas');
+require('./libros');
+require('./juegos');
+require('./series');
+require('./canciones');
