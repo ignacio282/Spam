@@ -1,5 +1,6 @@
 var mongoose=require('mongoose');
 
+
 var CancionSchema = new mongoose.Schema({
 	titulo:{type:String, required:true},
 	album:String,
@@ -8,5 +9,6 @@ var CancionSchema = new mongoose.Schema({
 	fecha:String
 
 });
+
 
 mongoose.model('Canciones',CancionSchema,'canciones');

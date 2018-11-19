@@ -11,19 +11,105 @@ var sendJsonResponse = function(res, status, content){
 	res.status(status);
 	res.json(content);
 }
+
 module.exports.peliculasCreate = function (req, res) {
-	sendJsonResponse(res, 200,{"status":"success"}); 
-	};
+	console.log(req.body);
+	Peli.create({
+		titulo: req.body.titulo,
+		sinopsis: req.body.sinopsis,
+		director: req.body.director,
+		duracion: req.body.duracion,
+		calificacion: req.body.calificacion
+
+	}, function(err,pelicula){
+		if(err){
+			console.log(err);
+			sendJsonResponse(res,400,err);
+		}else{
+			console.log(pelicula);
+			sendJsonResponse(res,201,pelicula);
+		}
+	}
+	
+	)};
 	
 module.exports.peliculasList = function (req, res) { 
-	sendJsonResponse(res, 200,{"status":"success"});
+	Peli
+	  .find()
+	  .exec(
+	  	function(err, pelicula){
+	  		if (!pelicula) {
+          sendJsonResponse(res, 404, {
+            "message": "peliculaid not found"
+          });
+          return;
+        } else if (err) {
+          sendJsonResponse(res, 400, err);
+          return;
+        }
+        sendJsonResponse(res, 200, pelicula);
+
+	  	});
 	};
 
 module.exports.peliculasUpdateOne = function (req, res) { 
-	sendJsonResponse(res, 200,{"status":"success"});
+	if (!req.params.peliculaid) {
+		sendJsonResponse(res, 404, {
+		  "message": "Not found, peliculaid is required"
+		});
+		return;
+	  }
+	  Peli
+		.findById(req.params.peliculaid)
+		.exec(
+		  function(err, pelicula) {
+			if (!pelicula) {
+			  sendJsonResponse(res, 404, {
+				"message": "peliculaid not found"
+			  });
+			  return;
+			} else if (err) {
+			  sendJsonResponse(res, 400, err);
+			  return;
+			}
+			pelicula.titulo = req.body.titulo;
+			pelicula.sinopsis = req.body.sinopsis;
+			pelicula.director = req.body.director;
+			pelicula.duracion = req.body.duracion;
+			pelicula.calificacion = req.body.calificacion;
+		   
+			
+			pelicula.save(function(err, pelicula) {
+			  if (err) {
+				sendJsonResponse(res, 404, err);
+			  } else {
+				sendJsonResponse(res, 200, pelicula);
+			  }
+			});
+		  }
+	  );
 	};
 module.exports.peliculasDeleteOne = function (req, res) { 
-	sendJsonResponse(res, 200,{"status":"success"});
+	var peliculaid = req.params.peliculaid;
+	if (peliculaid) {
+	  Peli
+		.findByIdAndRemove(peliculaid)
+		.exec(
+		  function(err, pelicula) {
+			if (err) {
+			  console.log(err);
+			  sendJsonResponse(res, 404, err);
+			  return;
+			}
+			console.log("pelicula id " + peliculaid + " deleted");
+			sendJsonResponse(res, 204, null);
+		  }
+	  );
+	} else {
+	  sendJsonResponse(res, 404, {
+		"message": "No peliculaid"
+	  });
+	}
 	};
 	
 	module.exports.peliculasReadOne = function(req, res){
@@ -74,7 +160,7 @@ module.exports.peliculasDeleteOne = function (req, res) {
 		
 		module.exports.librosReadOne = function(req, res){
 			if (req.params && req.params.libroid){
-				Can
+				Libr
 					.findById(req.params.libroid)
 					.exec(function(err, libro){
 						if(!libro){
