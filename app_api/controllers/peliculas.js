@@ -20,7 +20,10 @@ module.exports.peliculasCreate = function (req, res) {
 		director: req.body.director,
 		duracion: req.body.duracion,
 		calificacion: req.body.calificacion,
-		imagen: req.body.imagen
+		imagen: req.body.imagen,
+		fecha: req.body.fecha,
+		fav: req.body.fav
+
 
 	}, function(err,pelicula){
 		if(err){
@@ -76,10 +79,12 @@ module.exports.peliculasUpdateOne = function (req, res) {
 			}
 			pelicula.titulo = req.body.titulo;
 			pelicula.sinopsis = req.body.sinopsis;
-			pelicula.director = req.body.director;
-			pelicula.duracion = req.body.duracion;
-			pelicula.calificacion = req.body.calificacion;
+			pelicula.director= req.body.director;
+			pelicula.duracion= req.body.duracion;
+			pelicula.calificacion= req.body.calificacion;
 			pelicula.imagen = req.body.imagen;
+			pelicula.fecha = req.body.fecha;
+			pelicula.fav = req.body.fav;
 
 
 			pelicula.save(function(err, pelicula) {
@@ -151,7 +156,10 @@ module.exports.peliculasDeleteOne = function (req, res) {
 			autor: req.body.autor,
 			genero: req.body.genero,
 			fecha: req.body.fecha,
-			paginas: req.body.paginas
+			paginas: req.body.paginas,
+			calificacion: req.body.calificacion,
+			imagen: req.body.imagen,
+			fav: req.body.fav
 
 		}, function(err,libro){
 			if(err){
@@ -245,7 +253,9 @@ module.exports.cancionesCreate = function (req, res) {
 			album: req.body.album,
 			artista: req.body.artista,
 			genero: req.body.genero,
-			fecha: req.body.fecha
+			fecha: req.body.fecha,
+			imagen:req.body.imagen,
+			fav:req.body.fav
 
 		}, function(err,cancion){
 			if(err){
@@ -306,6 +316,9 @@ module.exports.cancionesUpdateOne = function (req, res) {
 			cancion.artista = req.body.artista;
 			cancion.genero = req.body.genero;
 			cancion.fecha = req.body.fecha;
+			cancion.imagen = req.body.imagen;
+			cancion.fav = req.body.fav;
+
 
 
 			cancion.save(function(err, cancion) {
@@ -358,7 +371,10 @@ module.exports.cancionesDeleteOne = function (req, res) {
 		Jueg.create({
 			titulo: req.body.titulo,
 			estudio: req.body.estudio,
-			genero: req.body.genero
+			genero: req.body.genero,
+			calificacion: req.body.calificacion,
+			imagen:req.body.imagen,
+			fav: req.body.fav
 
 		}, function(err,juego){
 			if(err){
@@ -434,7 +450,9 @@ module.exports.seriesCreate = function (req, res) {
 		genero: req.body.genero,
 		fecha: req.body.fecha,
 		temporadas: req.body.temporadas,
-		calificacion: req.body.calificacion
+		calificacion: req.body.calificacion,
+		iagen: req.body.iagen,
+		fav: req.body.fav
 
 	}, function(err,serie){
 		if(err){

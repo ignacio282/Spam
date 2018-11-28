@@ -4,9 +4,9 @@ var peliculaSchema = new mongoose.Schema({
 	titulo:{type:String, required:true},
 	sinopsis:String,
 	director:String,
-	imagen:String,
 	duracion:Number,
 	calificacion:Number,
+	imagen:String,
 	fecha:Number,
 	fav:Boolean
 

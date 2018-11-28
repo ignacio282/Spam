@@ -3,7 +3,11 @@ var express = require('express');
 var router = express.Router();
 var ctrlLocations = require('../controllers/peliculas');
 
-router.get('/',ctrlLocations.homelist);
+router.get('/',ctrlLocations.peliculasS);
+//router.get('/',ctrlLocations.seriesS);
+//router.get('/',ctrlLocations.librosS);
+//router.get('/',ctrlLocations.juegosS);
+//router.get('/',ctrlLocations.cancionesS);
 
 
 
