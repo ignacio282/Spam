@@ -4,9 +4,11 @@ var SerieSchema = new mongoose.Schema({
 	titulo:{type:String, required:true},
 	sinopsis:String,
 	genero:String,
-	fecha:String,
-    temporadas:String,
-    calificacion:String
+	fecha:Number,
+  temporadas:Number,
+  calificacion:Number,
+	imagen:String,
+	fav:Boolean
 
 });
 

@@ -11,7 +11,7 @@ var sendJsonResponse = function(res, status, content){
 	res.status(status);
 	res.json(content);
 }
-
+		//crear peliculas
 module.exports.peliculasCreate = function (req, res) {
 	console.log(req.body);
 	Peli.create({
@@ -19,7 +19,8 @@ module.exports.peliculasCreate = function (req, res) {
 		sinopsis: req.body.sinopsis,
 		director: req.body.director,
 		duracion: req.body.duracion,
-		calificacion: req.body.calificacion
+		calificacion: req.body.calificacion,
+		imagen: req.body.imagen
 
 	}, function(err,pelicula){
 		if(err){
@@ -30,10 +31,11 @@ module.exports.peliculasCreate = function (req, res) {
 			sendJsonResponse(res,201,pelicula);
 		}
 	}
-	
+
 	)};
-	
-module.exports.peliculasList = function (req, res) { 
+
+				//listar peliculas
+module.exports.peliculasList = function (req, res) {
 	Peli
 	  .find()
 	  .exec(
@@ -48,11 +50,11 @@ module.exports.peliculasList = function (req, res) {
           return;
         }
         sendJsonResponse(res, 200, pelicula);
-
 	  	});
 	};
 
-module.exports.peliculasUpdateOne = function (req, res) { 
+
+module.exports.peliculasUpdateOne = function (req, res) {
 	if (!req.params.peliculaid) {
 		sendJsonResponse(res, 404, {
 		  "message": "Not found, peliculaid is required"
@@ -77,8 +79,9 @@ module.exports.peliculasUpdateOne = function (req, res) {
 			pelicula.director = req.body.director;
 			pelicula.duracion = req.body.duracion;
 			pelicula.calificacion = req.body.calificacion;
-		   
-			
+			pelicula.imagen = req.body.imagen;
+
+
 			pelicula.save(function(err, pelicula) {
 			  if (err) {
 				sendJsonResponse(res, 404, err);
@@ -89,7 +92,9 @@ module.exports.peliculasUpdateOne = function (req, res) {
 		  }
 	  );
 	};
-module.exports.peliculasDeleteOne = function (req, res) { 
+
+
+module.exports.peliculasDeleteOne = function (req, res) {
 	var peliculaid = req.params.peliculaid;
 	if (peliculaid) {
 	  Peli
@@ -111,7 +116,7 @@ module.exports.peliculasDeleteOne = function (req, res) {
 	  });
 	}
 	};
-	
+
 	module.exports.peliculasReadOne = function(req, res){
 		if (req.params && req.params.peliculaid){
 			Peli
@@ -138,26 +143,74 @@ module.exports.peliculasDeleteOne = function (req, res) {
 
 
 //libros
-
-	var sendJsonResponse = function(res, status, content){
-		res.status(status);
-		res.json(content);
-	}
+			//crear libros
 	module.exports.librosCreate = function (req, res) {
-		sendJsonResponse(res, 200,{"status":"success"}); 
+		console.log(req.body);
+		Libr.create({
+			titulo: req.body.titulo,
+			autor: req.body.autor,
+			genero: req.body.genero,
+			fecha: req.body.fecha,
+			paginas: req.body.paginas
+
+		}, function(err,libro){
+			if(err){
+				console.log(err);
+				sendJsonResponse(res,400,err);
+			}else{
+				console.log(libro);
+				sendJsonResponse(res,201,libro);
+			}
+		}
+
+		)};
+
+		//revisar libros
+	module.exports.librosList = function (req, res) {
+		Libr
+	  .find()
+	  .exec(
+	  	function(err, libro){
+	  		if (!libro) {
+          sendJsonResponse(res, 404, {
+            "message": "libro not found"
+          });
+          return;
+        } else if (err) {
+          sendJsonResponse(res, 400, err);
+          return;
+        }
+        sendJsonResponse(res, 200, libro);
+
+	  	});
 		};
-		
-	module.exports.librosList = function (req, res) { 
+
+	module.exports.librosUpdateOne = function (req, res) {
 		sendJsonResponse(res, 200,{"status":"success"});
 		};
-	
-	module.exports.librosUpdateOne = function (req, res) { 
-		sendJsonResponse(res, 200,{"status":"success"});
+	module.exports.librosDeleteOne = function (req, res) {
+				var libroid = req.params.libroid;
+			if (libroid) {
+				Libr
+				.findByIdAndRemove(libroid)
+				.exec(
+					function(err, libro) {
+					if (err) {
+						console.log(err);
+						sendJsonResponse(res, 404, err);
+						return;
+					}
+					console.log("pelicula id " + libroid + " deleted");
+					sendJsonResponse(res, 204, null);
+					}
+				);
+			} else {
+				sendJsonResponse(res, 404, {
+				"message": "No peliculaid"
+				});
+			}
 		};
-	module.exports.librosDeleteOne = function (req, res) { 
-		sendJsonResponse(res, 200,{"status":"success"});
-		};
-		
+
 		module.exports.librosReadOne = function(req, res){
 			if (req.params && req.params.libroid){
 				Libr
@@ -181,28 +234,95 @@ module.exports.peliculasDeleteOne = function (req, res) {
 				});
 			}
 		};
-		
+
 //Canciones
-
-var sendJsonResponse = function(res, status, content){
-	res.status(status);
-	res.json(content);
-}
+		//crear cancion
 module.exports.cancionesCreate = function (req, res) {
-	sendJsonResponse(res, 200,{"status":"success"}); 
+	//sendJsonResponse(res, 200,{"status":"success"});
+	console.log(req.body);
+		Can.create({
+			titulo: req.body.titulo,
+			album: req.body.album,
+			artista: req.body.artista,
+			genero: req.body.genero,
+			fecha: req.body.fecha
+
+		}, function(err,cancion){
+			if(err){
+				console.log(err);
+				sendJsonResponse(res,400,err);
+			}else{
+				console.log(cancion);
+				sendJsonResponse(res,201,cancion);
+			}
+		}
+
+		)
 	};
-	
-module.exports.cancionesList = function (req, res) { 
+	//listar cancion
+module.exports.cancionesList = function (req, res) {
+	//sendJsonResponse(res, 200,{"status":"success"});
+	Can
+	  .find()
+	  .exec(
+	  	function(err, cancion){
+	  		if (!cancion) {
+          sendJsonResponse(res, 404, {
+            "message": "cancion not found"
+          });
+          return;
+        } else if (err) {
+          sendJsonResponse(res, 400, err);
+          return;
+        }
+        sendJsonResponse(res, 200, cancion);
+
+	  	});
+	};
+
+module.exports.cancionesUpdateOne = function (req, res) {
+
+	if (!req.params.cancionid) {
+		sendJsonResponse(res, 404, {
+		  "message": "Not found, cancionid is required"
+		});
+		return;
+	  }
+	  Can
+		.findById(req.params.cancionid)
+		.exec(
+		  function(err, cancion) {
+			if (!cancion) {
+			  sendJsonResponse(res, 404, {
+				"message": "cancionid not found"
+			  });
+			  return;
+			} else if (err) {
+			  sendJsonResponse(res, 400, err);
+			  return;
+			}
+			cancion.titulo = req.body.titulo;
+			cancion.album = req.body.album;
+			cancion.artista = req.body.artista;
+			cancion.genero = req.body.genero;
+			cancion.fecha = req.body.fecha;
+
+
+			cancion.save(function(err, cancion) {
+			  if (err) {
+				sendJsonResponse(res, 404, err);
+			  } else {
+				sendJsonResponse(res, 200, cancion);
+			  }
+			});
+		  }
+	  );
+
+	};
+module.exports.cancionesDeleteOne = function (req, res) {
 	sendJsonResponse(res, 200,{"status":"success"});
 	};
 
-module.exports.cancionesUpdateOne = function (req, res) { 
-	sendJsonResponse(res, 200,{"status":"success"});
-	};
-module.exports.cancionesDeleteOne = function (req, res) { 
-	sendJsonResponse(res, 200,{"status":"success"});
-	};
-	
 	module.exports.cancionesReadOne = function(req, res){
 		if (req.params && req.params.cancionid){
 			Can
@@ -229,25 +349,56 @@ module.exports.cancionesDeleteOne = function (req, res) {
 
 	//Juegos
 
-	var sendJsonResponse = function(res, status, content){
-		res.status(status);
-		res.json(content);
-	}
+	// var sendJsonResponse = function(res, status, content){
+	// 	res.status(status);
+	// 	res.json(content);
+	// }
 	module.exports.juegosCreate = function (req, res) {
-		sendJsonResponse(res, 200,{"status":"success"}); 
+		console.log(req.body);
+		Jueg.create({
+			titulo: req.body.titulo,
+			estudio: req.body.estudio,
+			genero: req.body.genero
+
+		}, function(err,juego){
+			if(err){
+				console.log(err);
+				sendJsonResponse(res,400,err);
+			}else{
+				console.log(juego);
+				sendJsonResponse(res,201,juego);
+			}
+		}
+
+		)
 		};
-		
-	module.exports.juegosList = function (req, res) { 
+
+	module.exports.juegosList = function (req, res) {
+		Jueg
+	  .find()
+	  .exec(
+	  	function(err, juego){
+	  		if (!juego) {
+          sendJsonResponse(res, 404, {
+            "message": "juego not found"
+          });
+          return;
+        } else if (err) {
+          sendJsonResponse(res, 400, err);
+          return;
+        }
+        sendJsonResponse(res, 200, juego);
+
+	  	});
+		};
+
+	module.exports.juegosUpdateOne = function (req, res) {
 		sendJsonResponse(res, 200,{"status":"success"});
 		};
-	
-	module.exports.juegosUpdateOne = function (req, res) { 
+	module.exports.juegosDeleteOne = function (req, res) {
 		sendJsonResponse(res, 200,{"status":"success"});
 		};
-	module.exports.juegosDeleteOne = function (req, res) { 
-		sendJsonResponse(res, 200,{"status":"success"});
-		};
-		
+
 		module.exports.juegosReadOne = function(req, res){
 			if (req.params && req.params.juegoid){
 				Jueg
@@ -275,25 +426,54 @@ module.exports.cancionesDeleteOne = function (req, res) {
 
 //Series
 
-var sendJsonResponse = function(res, status, content){
-	res.status(status);
-	res.json(content);
-}
 module.exports.seriesCreate = function (req, res) {
-	sendJsonResponse(res, 200,{"status":"success"}); 
+	console.log(req.body);
+	Ser.create({
+		titulo: req.body.titulo,
+		sinopsis: req.body.sinopsis,
+		genero: req.body.genero,
+		fecha: req.body.fecha,
+		temporadas: req.body.temporadas,
+		calificacion: req.body.calificacion
+
+	}, function(err,serie){
+		if(err){
+			console.log(err);
+			sendJsonResponse(res,400,err);
+		}else{
+			console.log(serie);
+			sendJsonResponse(res,201,serie);
+		}
+	}
+
+	)};
+	//listar todas las series
+module.exports.seriesList = function (req, res) {
+	Ser
+	  .find()
+	  .exec(
+	  	function(err, serie){
+	  		if (!serie) {
+          sendJsonResponse(res, 404, {
+            "message": "serie not found"
+          });
+          return;
+        } else if (err) {
+          sendJsonResponse(res, 400, err);
+          return;
+        }
+        sendJsonResponse(res, 200, serie);
+
+	  	});
 	};
-	
-module.exports.seriesList = function (req, res) { 
+
+module.exports.seriesUpdateOne = function (req, res) {
+	sendJsonResponse(res, 200,{"status":"success"});
+	};
+module.exports.seriesDeleteOne = function (req, res) {
 	sendJsonResponse(res, 200,{"status":"success"});
 	};
 
-module.exports.seriesUpdateOne = function (req, res) { 
-	sendJsonResponse(res, 200,{"status":"success"});
-	};
-module.exports.seriesDeleteOne = function (req, res) { 
-	sendJsonResponse(res, 200,{"status":"success"});
-	};
-	
 	module.exports.seriesReadOne = function(req, res){
 		if (req.params && req.params.serieid){
 			Ser
@@ -317,5 +497,3 @@ module.exports.seriesDeleteOne = function (req, res) {
 			});
 		}
 	};
-
-	

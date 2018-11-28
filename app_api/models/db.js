@@ -1,6 +1,7 @@
 var mongoose = require('mongoose');
 var gracefulShutdown;
-var dbURI='mongodb://localhost/spam';
+//var dbURI='mongodb://localhost:27017/spam';
+var dbURI='mongodb+srv://jose:joseAtlas@pruebas-xkgrz.azure.mongodb.net/test?retryWrites=true';
 
 mongoose.connect(dbURI,{useNewUrlParser: true});
 

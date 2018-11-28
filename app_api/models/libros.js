@@ -4,9 +4,11 @@ var libroSchema = new mongoose.Schema({
 	titulo:{type:String, required:true},
 	autor:String,
 	genero:String,
-	fecha:String,
-	paginas:String
-
+	fecha:Number,
+	paginas:Number,
+	calificacion:Number,
+	imagen:String,
+	fav:Boolean
 });
 
 mongoose.model('Libros',libroSchema,'libros');

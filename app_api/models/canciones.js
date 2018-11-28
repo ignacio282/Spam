@@ -6,7 +6,9 @@ var CancionSchema = new mongoose.Schema({
 	album:String,
 	artista:String,
 	genero:String,
-	fecha:String
+	fecha:Number,
+	imagen:String,
+	fav:Boolean
 
 });
 
