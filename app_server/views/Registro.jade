@@ -19,9 +19,10 @@ block content
       p.message
         | Already registered? 
         a(href='#', id='signinD') Sign In
+
     form.login-form
-      input(type='text', placeholder='username')
-      input(type='password', placeholder='password')
+      input(type='text', placeholder='username', id='log_usuario')
+      input(type='password', placeholder='password', id='log_password')
       button login
       p.message
         | Not registered? 
