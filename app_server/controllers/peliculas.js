@@ -75,7 +75,30 @@ var renderSeries = function (req, res, responseBody){
 //GET 'home' page
 module.exports.peliculasS=function (req,res) {
 	var requestOptions, path;
-	path = '/api/peliculas';
+	var d = new Date();
+	var n = d.getDay();
+	if(n===0){
+		path = '/api/libros';
+	}
+	if(n===1){
+		path = '/api/peliculas';
+	}
+	if(n===2){
+		path = '/api/series';
+	}
+	if(n===3){
+		path = '/api/juegos';
+	}
+	if(n===4){
+		path = '/api/canciones';
+	}
+	if(n===5){
+		path = '/api/peliculas';
+	}
+	if(n===6){
+		path = '/api/series';
+	}
+
 	requestOptions = {
 		url : apiOptions.server + path,
 		method : "GET",
