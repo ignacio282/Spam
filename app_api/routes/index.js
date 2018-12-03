@@ -8,6 +8,8 @@ var ctrlJuegos = require('../controllers/peliculas');
 var ctrlSeries = require('../controllers/peliculas');
 
 
+//router.get('/todo', ctrlPeliculas.peliculasList);
+
 //Peliculas
 router.get('/peliculas', ctrlPeliculas.peliculasList);
 router.post('/peliculas',ctrlPeliculas.peliculasCreate);

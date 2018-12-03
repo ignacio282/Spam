@@ -7,7 +7,7 @@ block content
       .row
         .col-lg-10.mx-auto
           h1.text-uppercase
-            strong Recomendaciones Con Harta Demencia
+            strong Recomendaciones Para cada dia
           hr
         .col-lg-8.mx-auto
           p.text-faded.mb-5
@@ -17,10 +17,11 @@ block content
     .container
       .row
         .col-sm-12.centerLetter
-          h1.text-uppercase
-            strong Recomendaciones 
-            spam  
-          hr
+          .txt-color
+            h1.text-uppercase
+              strong Recomendaciones 
+              spam  
+            hr
         .col-lg-8.mx-auto.centerLetter
           p.text-faded.mb-5
             |Esto es lo que tenemos para ti el dia de hoy
@@ -28,10 +29,16 @@ block content
         each pelicula in peliculas
           .col-sm-4
             .card
-              img(src='https://banner2.kisspng.com/20180320/zce/kisspng-film-computer-icons-screenwriter-download-png-movie-icon-5ab0ef0332a9b5.3788170315215449632075.jpg', alt='Avatar', style='width:100%')
               .container
-                h4
-                i.fa.fa-film(aria-hidden='true')
-                br
-                b= pelicula.titulo 
+                img.image(src=pelicula.imagen, alt='Avatar', style='width:100%')
+                .middle
+                  .text SINOPSIS:
+                    p=pelicula.sinopsis
+                .container
+                  h4
+                  .txt-color
+                    i.fa.fa-film(aria-hidden='true')
+                    br
+                    b= pelicula.titulo 
+              
                 

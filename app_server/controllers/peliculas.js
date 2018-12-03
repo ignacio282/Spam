@@ -6,6 +6,59 @@ if (process.env.NODE_ENV === 'production'){
 	apiOptions.server = "https://ejemploclaseservidor2.herokuapp.com";
 }
 
+
+/*
+module.exports.mosTodo=function (req,res) {
+	var requestOptionsPeliculas, pathPeliculas, requestOptionsLibros, pathLibros;
+
+	pathPeliculas = '/api/peliculas';
+	pathLibros = '/api/libros';
+
+	requestOptionsPeliculas = {
+		url : apiOptions.server + pathPeliculas,
+		method : "GET",
+		json : {},
+		qs : {
+
+		}
+	};
+	requestOptionsLibros = {
+		url : apiOptions.server + pathLibros,
+		method : "GET",
+		json : {},
+		qs : {
+
+		}
+	};
+	request (
+		requestOptionsPeliculas,requestOptionsLibros,
+		function(err, responsePeliculas, responseLibros, bodyPeliculas, bodyLibros){
+			var dataPeliculas;
+			var dataLibros;
+			dataPeliculas = bodyPeliculas;
+			dataLibros = bodyLibros;
+
+			mostrarTodoEstilo(req, res, dataPeliculas,dataLibros);
+		});
+};
+
+var mostrarTodoEstilo = function (req, res, responsePeliculas, responseLibros){
+	var message;
+	if (!(responsePeliculas instanceof Array) && !(responseLibros instanceof Array)){
+		message = "API lookup error";
+		responsePeliculas = [];
+		responseLibros = [];
+
+	}
+	res.render('favoritos',{
+
+		peliculas:responsePeliculas,
+		message : message
+	}
+	
+	);
+}*/
+
 var renderPeliculas = function (req, res, responseBody){
 	var message;
 	if (!(responseBody instanceof Array)){
@@ -73,6 +126,8 @@ var renderSeries = function (req, res, responseBody){
 
 
 //GET 'home' page
+
+
 module.exports.peliculasS=function (req,res) {
 	var requestOptions, path;
 	var d = new Date();

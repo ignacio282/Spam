@@ -15,5 +15,21 @@ module.exports.settings=function(req,res){
 };
 
 module.exports.favoritos=function(req,res){
-    res.render('Favoritos', {title:'Favoritos'});
+    res.render('Favoritos', {title:'Catálago Películas'});
+};
+
+module.exports.favmusica=function(req,res){
+    res.render('FavMusica', {title:'Catálago Música'});
+};
+
+module.exports.favseries=function(req,res){
+    res.render('FavSeries', {title:'Catálago Series'});
+};
+
+module.exports.favlibros=function(req,res){
+    res.render('FavLibros', {title:'Catálago Libros'});
+};
+
+module.exports.favjuegos=function(req,res){
+    res.render('FavJuegos', {title:'Catálago Juegos'});
 };
